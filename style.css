@@ -31,14 +31,11 @@
 body {
     font-family: var(--font-sans);
     overflow: hidden;
-    /* Enforce no-scroll */
     background: var(--bg-gradient);
     height: 100vh;
     width: 100vw;
     position: relative;
     color: var(--text-slate);
-    touch-action: none;
-    /* Prevent browser handling of gestures like pinch zoom to maintain app feel */
 }
 
 /* Canvas Backdrops */
@@ -52,17 +49,6 @@ body {
     pointer-events: none;
     opacity: 0.85;
     /* Soften the 3D element slightly */
-}
-
-
-#particle-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
 }
 
 /* Watermark Text */
@@ -83,24 +69,76 @@ body {
 
 /* Main UI Wrapper */
 #main-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+    z-index: 10;
     width: 100%;
     height: 100%;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     pointer-events: none;
 }
 
-#nodes-container {
-    position: absolute;
-    top: 0;
-    left: 0;
+.symmetrical-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    height: 100vh;
+    padding: 5vh 24px;
+    pointer-events: none;
+}
+
+.layout-header {
+    text-align: center;
+    max-width: 1200px;
+    width: 100%;
+    pointer-events: all;
+}
+
+.layout-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1.2fr 1.1fr;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+    max-width: 1280px;
+    flex-grow: 1;
+    pointer-events: none;
+}
+
+.grid-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     height: 100%;
+    pointer-events: all;
+}
+
+.col-content {
+    background: #ffffff;
+    padding: 35px 30px;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+    border: none;
+}
+
+.left-col {
+    text-align: LEFT;
+}
+
+.right-col {
+    text-align: left;
+}
+
+.center-col {
+    align-items: center;
+    pointer-events: all;
+}
+
+.layout-footer-stats {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    pointer-events: all;
 }
 
 #center-ui {
@@ -337,5 +375,217 @@ body {
         padding: 14px 30px;
         font-size: 14px;
         margin-top: 25px;
+    }
+}
+
+/* Tagline with Flanking lines */
+.tagline-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.tagline-line {
+    height: 1px;
+    width: 40px;
+    background: linear-gradient(to right, rgba(22, 163, 74, 0), rgba(22, 163, 74, 0.4));
+}
+
+.tagline-container .tagline-line:last-child {
+    background: linear-gradient(to left, rgba(22, 163, 74, 0), rgba(22, 163, 74, 0.4));
+}
+
+.info-tagline {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--primary-green);
+    text-transform: uppercase;
+}
+
+.info-title {
+    font-size: clamp(28px, 3.2vw, 44px);
+    font-weight: 800;
+    color: var(--text-charcoal);
+    line-height: 1.2;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+}
+
+.highlight-green {
+    color: var(--primary-green);
+    font-weight: 800;
+}
+
+.info-subtitle {
+    font-size: 16px;
+    color: var(--text-gray);
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+/* Card Elements & Headers */
+.col-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.col-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-charcoal);
+}
+
+.header-icon-wrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #f0fdf4;
+    border: 1px solid #dcfce7;
+    color: var(--primary-green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.text-highlight-green {
+    color: var(--primary-green-hover);
+    font-weight: 700;
+}
+
+/* Features checklist */
+.features-checklist {
+    list-style: none;
+    margin-top: 20px;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.features-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-slate);
+}
+
+.features-checklist li i {
+    color: var(--primary-green);
+    font-size: 16px;
+}
+
+/* Stats Pill Bar */
+.stats-pill-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border-radius: 50px;
+    padding: 12px 40px;
+    box-shadow: 0 10px 25px -5px rgba(120, 113, 108, 0.08), 0 0 0 1px rgba(22, 163, 74, 0.04);
+    width: 100%;
+    max-width: 1000px;
+}
+
+.stat-pill-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pill-icon {
+    font-size: 20px;
+    color: var(--primary-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pill-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.pill-bold {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text-charcoal);
+    letter-spacing: 0.5px;
+}
+
+.pill-light {
+    font-size: 11px;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+.pill-divider {
+    width: 1px;
+    height: 30px;
+    background: #e2e8f0;
+}
+
+/* Mobile Overrides */
+@media (max-width: 1024px) {
+    body {
+        overflow-y: auto;
+        height: auto;
+    }
+    
+    #main-wrapper {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .symmetrical-layout {
+        height: auto;
+        min-height: 100vh;
+        padding: 40px 20px;
+        justify-content: flex-start;
+        gap: 30px;
+    }
+
+    .layout-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .center-col {
+        order: -1;
+    }
+
+    .left-col, .right-col {
+        text-align: left;
+    }
+    
+    .col-header {
+        justify-content: flex-start;
+    }
+
+    .stats-pill-bar {
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 24px;
+        padding: 24px;
+        gap: 16px;
+    }
+
+    .pill-divider {
+        display: none;
+    }
+    
+    .stat-pill-item {
+        justify-content: flex-start;
     }
 }

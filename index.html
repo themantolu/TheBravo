@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Three.js Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <!-- Stylesheet -->
@@ -22,27 +24,109 @@
     <div id="canvas-container"></div>
 
     <!-- Background Watermark -->
-    <div class="election-watermark">THE BRAVO</div>
-
-    <!-- Dynamic Canvas Backdrops -->
-    <canvas id="particle-bg"></canvas>
-    <canvas id="network-lines"></canvas>
+    <div class="election-watermark"></div>
 
     <!-- Interactive UI Wrapper -->
     <div id="main-wrapper">
-        <!-- Node Points Layout -->
-        <div id="nodes-container"></div>
-
-        <!-- Central Interface -->
-        <div id="center-ui">
-            <div class="logo-wrapper">
-                <img src="Bravo new logo 1.png" alt="Bravo Logo" id="bravo-logo"
-                    onerror="this.src='https://placehold.co/480x480/ffffff/16a34a?text=Bravo+Logo';">
+        <div class="symmetrical-layout">
+            <!-- Header Row -->
+            <div class="layout-header">
+                <div class="tagline-container">
+                    <span class="tagline-line"></span>
+                    <span class="info-tagline">NIGERIA’S ELECTION INTELLIGENCE ENGINE</span>
+                    <span class="tagline-line"></span>
+                </div>
+                <h1 class="info-title">Let <span class="highlight-green">BRAVO</span> Power Your Next Campaign</h1>
+                <p class="info-subtitle">Intelligence. Operations. Victory.</p>
             </div>
-            <button class="primary-btn" id="open-modal-btn">
-                <span>Request a Service</span>
-                <i class="btn-glow-effect"></i>
-            </button>
+
+            <!-- Three Column Grid -->
+            <div class="layout-grid">
+                <!-- Left Column: Who We Are -->
+                <div class="grid-col left-col">
+                    <div class="col-content">
+                        <div class="col-header">
+                            <div class="header-icon-wrapper">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <h2>Who We Are</h2>
+                        </div>
+                        <p><strong>Bravo Elections Management Systems</strong> is Nigeria’s premier elections
+                            intelligence and operations company. Since 2018, we have powered campaigns across <span
+                                class="text-highlight-green">10 states and 4 election classes — governorship,
+                                senatorial, House of Representatives and LGA —</span>
+                            turning raw INEC data into <span class="text-highlight-green">decisive electoral
+                                victories</span>.</p>
+                    </div>
+                </div>
+
+                <!-- Center Column: Logo & CTA -->
+                <div class="grid-col center-col">
+                    <div id="center-ui">
+                        <div class="logo-wrapper">
+                            <img src="Bravo new logo 1.png" alt="Bravo Logo" id="bravo-logo"
+                                onerror="this.src='https://placehold.co/480x480/ffffff/16a34a?text=Bravo+Logo';">
+                        </div>
+                        <button class="primary-btn" id="open-modal-btn">
+                            <i class="fa-regular fa-calendar-days" style="font-size: 18px; margin-right: 8px;"></i>
+                            <span>REQUEST A SERVICE</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: What We Do -->
+                <div class="grid-col right-col">
+                    <div class="col-content">
+                        <div class="col-header">
+                            <div class="header-icon-wrapper">
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+                            <h2>What We Do</h2>
+                        </div>
+                        <p>End-to-end campaign operations, integrated by design. From operating picture, one chain of
+                            command, one accountable partner — from voter file to final declaration.</p>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Stats Row -->
+            <div class="layout-footer-stats">
+                <div class="stats-pill-bar">
+                    <div class="stat-pill-item">
+                        <div class="pill-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="pill-text">
+                            <span class="pill-bold">10 STATES</span>
+                            <span class="pill-light">Proven Experience</span>
+                        </div>
+                    </div>
+                    <div class="pill-divider"></div>
+                    <div class="stat-pill-item">
+                        <div class="pill-icon"><i class="fa-solid fa-chart-column"></i></div>
+                        <div class="pill-text">
+                            <span class="pill-bold">4 ELECTION TYPES</span>
+                            <span class="pill-light">Complete Coverage</span>
+                        </div>
+                    </div>
+                    <div class="pill-divider"></div>
+                    <div class="stat-pill-item">
+                        <div class="pill-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="pill-text">
+                            <span class="pill-bold">8 YEARS RUNNING</span>
+                            <span class="pill-light">Trusted Since 2018</span>
+                        </div>
+                    </div>
+                    <div class="pill-divider"></div>
+                    <div class="stat-pill-item">
+                        <div class="pill-icon"><i class="fa-solid fa-trophy"></i></div>
+                        <div class="pill-text">
+                            <span class="pill-bold">DECISIVE RESULTS</span>
+                            <span class="pill-light">Victory Through Intelligence</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
