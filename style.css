@@ -1,0 +1,341 @@
+/* Design System & Root variables */
+:root {
+    --primary-green: #16a34a;
+    --primary-green-hover: #15803d;
+    --accent-green-light: #22c55e;
+    --border-green-soft: rgba(134, 239, 172, 0.4);
+
+    --bg-gradient: radial-gradient(circle at center, #ffffff 20%, #f0fdf4 60%, #dcfce7 100%);
+    --text-slate: #1e293b;
+    --text-charcoal: #0f172a;
+    --text-gray: #64748b;
+
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+    --shadow-card: 0 10px 30px -10px rgba(22, 163, 74, 0.15);
+    --shadow-btn: 0 10px 25px -5px rgba(22, 163, 74, 0.4);
+    --shadow-btn-hover: 0 15px 30px -5px rgba(22, 163, 74, 0.5);
+    --shadow-modal: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(22, 163, 74, 0.1);
+
+    --transition-spring: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --transition-smooth: 0.3s ease;
+}
+
+/* Reset and Layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    overflow: hidden;
+    /* Enforce no-scroll */
+    background: var(--bg-gradient);
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    color: var(--text-slate);
+    touch-action: none;
+    /* Prevent browser handling of gestures like pinch zoom to maintain app feel */
+}
+
+/* Canvas Backdrops */
+#canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.85;
+    /* Soften the 3D element slightly */
+}
+
+
+#particle-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Watermark Text */
+.election-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(40px, 8vw, 120px);
+    font-weight: 900;
+    color: rgba(34, 197, 94, 0.05);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+    user-select: none;
+    letter-spacing: 0.05em;
+}
+
+/* Main UI Wrapper */
+#main-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+#nodes-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#center-ui {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 30;
+    pointer-events: all;
+    position: relative;
+}
+
+/* Logo Styling */
+
+
+#bravo-logo {
+    width: 320px;
+    max-width: 60vw;
+    height: auto;
+    display: block;
+}
+
+
+
+/* Interactive Buttons */
+.primary-btn {
+    margin-top: 35px;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-hover));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: var(--shadow-btn);
+    transition: all var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-btn-hover);
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Service Nodes */
+.service-card {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-green-soft);
+    border-radius: 100px;
+    padding: 10px 24px 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--shadow-card);
+    pointer-events: all;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition: transform var(--transition-spring), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+    z-index: 25;
+    white-space: nowrap;
+}
+
+.service-card:hover {
+    border-color: var(--accent-green-light);
+    box-shadow: 0 15px 35px -10px rgba(22, 163, 74, 0.3);
+    transform: translate(-50%, -50%) scale(1.05) !important;
+    z-index: 40;
+}
+
+.icon-box {
+    width: 40px;
+    height: 40px;
+    background: #f0fdf4;
+    color: var(--primary-green);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border: 1px solid #dcfce7;
+}
+
+.icon-box svg {
+    width: 20px;
+    height: 20px;
+}
+
+.service-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-charcoal);
+    letter-spacing: 0.5px;
+}
+
+/* Modal Form styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-smooth);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-card {
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: var(--shadow-modal);
+    transform: translateY(20px) scale(0.95);
+    transition: transform var(--transition-spring);
+    position: relative;
+}
+
+.modal-overlay.active .modal-card {
+    transform: translateY(0) scale(1);
+}
+
+.modal-card h2 {
+    margin-top: 0;
+    color: #14532d;
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.modal-card p {
+    color: var(--text-gray);
+    font-size: 14px;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.modal-card input,
+.modal-card select,
+.modal-card textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    box-sizing: border-box;
+    outline: none;
+    background: #f8fafc;
+    transition: all 0.2s;
+    color: var(--text-slate);
+}
+
+.modal-card input:focus,
+.modal-card select:focus,
+.modal-card textarea:focus {
+    border-color: var(--accent-green-light);
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+    background: white;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: var(--text-charcoal);
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+
+    #bravo-logo {
+        width: 220px;
+    }
+
+    .service-card {
+        padding: 8px 16px 8px 10px;
+        gap: 8px;
+    }
+
+    .icon-box {
+        width: 32px;
+        height: 32px;
+    }
+
+    .icon-box svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .service-title {
+        font-size: 11px;
+    }
+
+    .primary-btn {
+        padding: 14px 30px;
+        font-size: 14px;
+        margin-top: 25px;
+    }
+}

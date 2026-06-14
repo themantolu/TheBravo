@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bravo - Intelligent Elections Engine</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 3D WebGL Background Container -->
+    <div id="canvas-container"></div>
+
+    <!-- Background Watermark -->
+    <div class="election-watermark">THE BRAVO</div>
+
+    <!-- Dynamic Canvas Backdrops -->
+    <canvas id="particle-bg"></canvas>
+    <canvas id="network-lines"></canvas>
+
+    <!-- Interactive UI Wrapper -->
+    <div id="main-wrapper">
+        <!-- Node Points Layout -->
+        <div id="nodes-container"></div>
+
+        <!-- Central Interface -->
+        <div id="center-ui">
+            <div class="logo-wrapper">
+                <img src="Bravo new logo 1.png" alt="Bravo Logo" id="bravo-logo"
+                    onerror="this.src='https://placehold.co/480x480/ffffff/16a34a?text=Bravo+Logo';">
+            </div>
+            <button class="primary-btn" id="open-modal-btn">
+                <span>Request a Service</span>
+                <i class="btn-glow-effect"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Request Form Modal -->
+    <div id="service-modal" class="modal-overlay">
+        <div class="modal-card">
+            <button id="close-modal" class="close-btn" aria-label="Close modal">&times;</button>
+            <h2>Service Request</h2>
+            <p>Engage with our intelligent elections suite. Select a service below to begin.</p>
+            <form id="service-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required />
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email Address" required />
+                </div>
+                <div class="form-group">
+                    <select required id="service-select">
+                        <option value="" disabled selected>Select a Service...</option>
+                        <option value="observers">Observers Management</option>
+                        <option value="results">Election Results Management</option>
+                        <option value="forensics">Forensics + Expert Witnesses</option>
+                        <option value="callcenter">Call Center</option>
+                        <option value="petitions">Elections Petitions Support</option>
+                        <option value="situation">Situation Rooms</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Additional Requirements" rows="3"></textarea>
+                </div>
+                <button type="submit" class="primary-btn submit-btn">
+                    <span>Submit Request</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+
+</html>
